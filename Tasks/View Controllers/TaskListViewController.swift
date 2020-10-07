@@ -11,7 +11,7 @@ import UIKit
 class TaskListViewController: UIViewController {
 	
 	// MARK: Properties
-	var tasks = [String]()
+	var tasks = [Task]()
 	
 	// MARK: - IBOutlets
     @IBOutlet var tableView: UITableView!
@@ -49,7 +49,7 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = tasks[indexPath.row]
+		cell.textLabel?.text = tasks[indexPath.row].text
         return cell
     }
 	
@@ -59,17 +59,16 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
         
         let taskViewController = storyboard?.instantiateViewController(identifier: "task") as! TaskViewController
         taskViewController.title = "New Task"
-        taskViewController.task = tasks[indexPath.row]
+		taskViewController.task = tasks[indexPath.row].text
 		taskViewController.row = indexPath.row
 		taskViewController.delegate = self
-		
         navigationController?.pushViewController(taskViewController, animated: true)
     }
 }
 
 extension TaskListViewController: EntryViewControllerDelegate {
 	
-	func didFinishCreatingTask(_ task: String) {
+	func didFinishCreatingTask(_ task: Task) {
 		tasks.append(task)
 		tableView.reloadData()
 	}

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol EntryViewControllerDelegate: class {
-	func didFinishCreatingTask(_ task: String)
+	func didFinishCreatingTask(_ task: Task)
 }
 
 class EntryViewController: UIViewController {
@@ -36,8 +36,11 @@ class EntryViewController: UIViewController {
 			print("Could not find text to create task.")
             return
         }
+		
+		let task = Task(text: text, dateCreated: Date(), completed: false)
+		print("Created task: \(task)")
         
-		delegate?.didFinishCreatingTask(text)
+		delegate?.didFinishCreatingTask(task)
         
         navigationController?.popViewController(animated: true)
     }
