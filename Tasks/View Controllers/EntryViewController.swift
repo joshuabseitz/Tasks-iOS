@@ -8,45 +8,47 @@
 
 import UIKit
 
-class EntryViewController: UIViewController, UITextFieldDelegate {
+protocol EntryViewControllerDelegate: class {
+	func didFinishCreatingTask(_ task: String)
+}
 
-    @IBOutlet var field: UITextField!
-    
-    var update: (() -> Void)?
+class EntryViewController: UIViewController {
+	
+	weak var delegate: EntryViewControllerDelegate?
+
+    @IBOutlet var textField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        field.delegate = self
+		
+        textField.delegate = self
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(saveTask))
-        // Do any additional setup after loading the view.
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save",
+															style: .done,
+															target: self,
+															action: #selector(saveTask))
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        saveTask()
-        return true
-    }
-    
-    //objc allows it to be used as a selector
     @objc func saveTask() {
+		// Dev note: objc allows it to be used as a selector
         
-        guard let text = field.text, !text.isEmpty else {
+        guard let text = textField.text, !text.isEmpty else {
+			print("Could not find text to create task.")
             return
         }
         
-        guard let  count = UserDefaults().value(forKey: "count") as? Int else {
-            return
-        }
-        
-        let newCount = count + 1
-        UserDefaults().set(newCount, forKey: "count")
-        UserDefaults().set(text, forKey: "task_\(newCount)")
-        
-        update?()
+		delegate?.didFinishCreatingTask(text)
         
         navigationController?.popViewController(animated: true)
-        
     }
+}
 
+// MARK: - UITextFieldDelegate
 
+extension EntryViewController: UITextFieldDelegate {
+	
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        saveTask()
+        return false
+    }
 }
