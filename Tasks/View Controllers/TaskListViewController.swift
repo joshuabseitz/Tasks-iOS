@@ -27,12 +27,17 @@ class TaskListViewController: UIViewController {
         tableView.dataSource = self
     }
 	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		tasks = PersistenceController.getAllTasks()
+		tableView.reloadData()
+	}
+	
 	// MARK: - IBActions
 	
     @IBAction func didTapAdd() {
         
         let entryListViewController = storyboard?.instantiateViewController(identifier: "entry") as! EntryViewController
-        entryListViewController.title = "New Task"
 		entryListViewController.delegate = self
 		
         navigationController?.pushViewController(entryListViewController, animated: true)
@@ -59,7 +64,8 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
         
         let taskViewController = storyboard?.instantiateViewController(identifier: "task") as! TaskViewController
         taskViewController.title = "New Task"
-		taskViewController.task = tasks[indexPath.row].text
+		taskViewController.task = tasks[indexPath.row]
+		taskViewController.taskText = tasks[indexPath.row].text
 		taskViewController.row = indexPath.row
 		taskViewController.delegate = self
         navigationController?.pushViewController(taskViewController, animated: true)
@@ -69,7 +75,7 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
 extension TaskListViewController: EntryViewControllerDelegate {
 	
 	func didFinishCreatingTask(_ task: Task) {
-		tasks.append(task)
+		PersistenceController.save(task)
 		tableView.reloadData()
 	}
 }
@@ -77,7 +83,9 @@ extension TaskListViewController: EntryViewControllerDelegate {
 extension TaskListViewController: TaskViewControllerDelegate {
 	
 	func didDeleteTask(index: Int) {
-		tasks.remove(at: index)
+		PersistenceController.delete(tasks[index])
+//		tasks.remove(at: index)
+		tasks = PersistenceController.getAllTasks()
 		tableView.reloadData()
 	}
 }

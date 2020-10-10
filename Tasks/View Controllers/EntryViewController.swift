@@ -17,12 +17,13 @@ class EntryViewController: UIViewController {
 	weak var delegate: EntryViewControllerDelegate?
 
     @IBOutlet var textField: UITextField!
+	
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-		
+		super.viewDidLoad()
+		self.title = "New Task"
         textField.delegate = self
-        
+		
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save",
 															style: .done,
 															target: self,
@@ -37,11 +38,13 @@ class EntryViewController: UIViewController {
             return
         }
 		
-		let task = Task(text: text, dateCreated: Date(), completed: false)
+		let task = Task(context: PersistenceController.container.viewContext)
+		task.text = text
+		task.dateCreated = Date()
+		task.completed = false
 		print("Created task: \(task)")
-        
 		delegate?.didFinishCreatingTask(task)
-        
+
         navigationController?.popViewController(animated: true)
     }
 }

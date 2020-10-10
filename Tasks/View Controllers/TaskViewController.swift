@@ -13,26 +13,29 @@ protocol TaskViewControllerDelegate {
 }
 
 class TaskViewController: UIViewController {
-
-    var task: String?
+    var task: Task?
+	var taskText: String?
 	var row: Int?
 	var delegate: TaskViewControllerDelegate?
 	
 	@IBOutlet var label: UILabel!
+	
     
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		label.text = task
+		label.text = task?.text
 		
 		navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Delete",
 															style: .done,
 															target: self,
 															action: #selector(deleteTask))
+		
 	}
 	
 	@objc func deleteTask() {
 		delegate?.didDeleteTask(index: row!)
 		navigationController?.popViewController(animated: true)
 	}
+	
 }
