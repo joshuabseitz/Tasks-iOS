@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		572030AE253273EA003F4407 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572030AD253273EA003F4407 /* EditViewController.swift */; };
 		57CB15A025268237004D430A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CB159F25268237004D430A /* AppDelegate.swift */; };
 		57CB15A225268237004D430A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CB15A125268237004D430A /* SceneDelegate.swift */; };
 		57CB15A425268237004D430A /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CB15A325268237004D430A /* TaskListViewController.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		572030AD253273EA003F4407 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		57CB159C25268237004D430A /* Tasks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tasks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57CB159F25268237004D430A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57CB15A125268237004D430A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +53,7 @@
 				57CB15A325268237004D430A /* TaskListViewController.swift */,
 				57DD4E11252688FD0007CA98 /* EntryViewController.swift */,
 				57DD4E132526891D0007CA98 /* TaskViewController.swift */,
+				572030AD253273EA003F4407 /* EditViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				572030AE253273EA003F4407 /* EditViewController.swift in Sources */,
 				57CB15A425268237004D430A /* TaskListViewController.swift in Sources */,
 				57DD4E12252688FD0007CA98 /* EntryViewController.swift in Sources */,
 				57DD4E142526891D0007CA98 /* TaskViewController.swift in Sources */,

@@ -42,12 +42,19 @@ class TaskListViewController: UIViewController {
 		
         navigationController?.pushViewController(entryListViewController, animated: true)
     }
+	
 }
 
 // MARK: - UITableViewDelegate & UITableViewDataSource
 
 extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
 	
+	func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+			didDeleteTask(index: indexPath.row)
+        }
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tasks.count
     }
