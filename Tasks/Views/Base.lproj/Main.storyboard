@@ -63,26 +63,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JUV-xC-7NC">
-                                <rect key="frame" x="20" y="64" width="374" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="v64-sf-9dR"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Task title" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lV9-cb-cmR">
+                                <rect key="frame" x="33" y="162" width="349" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Task value" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rx0-Qv-bIY">
+                                <rect key="frame" x="33" y="212" width="349" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="numberPad"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Description of task" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="p4T-ZO-imU">
+                                <rect key="frame" x="33" y="262" width="349" height="182"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="JUV-xC-7NC" firstAttribute="top" secondItem="U11-Aa-sjz" secondAttribute="top" constant="20" id="Lc4-nS-siA"/>
-                            <constraint firstItem="U11-Aa-sjz" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="JUV-xC-7NC" secondAttribute="bottom" constant="20" id="t2Y-WR-qLb"/>
-                            <constraint firstItem="JUV-xC-7NC" firstAttribute="leading" secondItem="U11-Aa-sjz" secondAttribute="leading" constant="20" id="thK-Ue-C8s"/>
-                            <constraint firstItem="U11-Aa-sjz" firstAttribute="trailing" secondItem="JUV-xC-7NC" secondAttribute="trailing" constant="20" id="ze7-eu-aeg"/>
-                        </constraints>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="U11-Aa-sjz"/>
                     </view>
                     <connections>
-                        <outlet property="textField" destination="JUV-xC-7NC" id="Hey-cY-foc"/>
+                        <outlet property="taskDescriptionTextView" destination="p4T-ZO-imU" id="9WH-KF-HUE"/>
+                        <outlet property="taskTitleTextView" destination="lV9-cb-cmR" id="m51-dP-LdX"/>
+                        <outlet property="taskValueTextView" destination="rx0-Qv-bIY" id="wHB-TT-0XA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JSp-lS-UBh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
